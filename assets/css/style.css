@@ -1,0 +1,28 @@
+/* line 1, ../compass/sass/style.scss */
+body {
+  background-color: gray;
+}
+/* line 3, ../compass/sass/style.scss */
+body #site-wrapper {
+  background-color: white;
+  max-width: 1000px;
+  margin: auto;
+  overflow: hidden;
+}
+/* line 8, ../compass/sass/style.scss */
+body #site-wrapper .element-wrapper {
+  float: left;
+  width: 300px;
+  height: 400px;
+  border: 1px solid black;
+  margin: 5px;
+}
+/* line 14, ../compass/sass/style.scss */
+body #site-wrapper .element-wrapper .image-wrapper {
+  height: 300px;
+  border-bottom: 1px solid red;
+}
+/* line 18, ../compass/sass/style.scss */
+body #site-wrapper .element-wrapper .description-wrapper {
+  text-align: center;
+}
