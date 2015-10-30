@@ -1,20 +1,44 @@
 $(window).load(function(){
 	var	imageElements = $('.element-wrapper');
-	var rescaleImages = $(imageElements).find('.dynamic-image');
-	for(i = 0; i < rescaleImages.length; i++){
-		var imageHeight = $(rescaleImages[i]).height();
-		var imageWidth = $(rescaleImages[i]).width();
-		var imageRatio  = 0;
+	var rescaleImageDiv = $(imageElements).find('.image-wrapper');
+	for(i = 0; i < rescaleImageDiv.length; i++){
+		var imageHeights = [];
+		var imageWidths = [];
+		var maxWidth = 0;
+		var totalHeight;
 
-		if(imageHeight > imageWidth){
-			$(rescaleImages[i]).height( 300 );
-			imageWidth = $(rescaleImages[i]).width();
-			$(rescaleImages[i]).css('margin-left', (300-imageWidth) / 2);
+		//Loop through all images in the image div to find total height and total width;
+		$(rescaleImageDiv[i]).find('img').each(function(){
+			imageHeights.push($(this).height());
+			imageWidths.push($(this).width());
+		});
+
+		for(i = 0; i < imageWidths.length; i++){
+			if(imageWidths[i] > maxWidth){
+				maxWidth = imageWidths[i];
+			}
+		}
+		for(i = 0; i < imageHeights.length; i++){
+			totalHeight += imageHeights[i];
+		}
+
+		if(totalHeight > totalWidth){
+
+
+			$(rescaleImageDiv[i]).height( 300 );
+			maxWidth = $(rescaleImages[i]).width();
+			$(rescaleImageDiv[i]).css('margin-left', (300-maxWidth) / 2);
+
+
 
 		} else {
-			$(rescaleImages[i]).width( 300 );
-			imageHeight = $(rescaleImages[i]).height();
-			$(rescaleImages[i]).css('margin-top', (300-imageHeight) / 2);
+
+
+			$(rescaleImageDiv[i]).width( 300 );
+			totalHeight = $(rescaleImageDiv[i]).height();
+			$(rescaleImageDiv[i]).find('img').first().css('margin-top', (300-totalHeight) / 2);
+
+
 		}
 	}
 });
